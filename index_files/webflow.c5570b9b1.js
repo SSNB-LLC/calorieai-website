@@ -1555,7 +1555,75 @@ __p+='`),
     lt();
     dt.exports = window.Webflow = te;
   });
-
+  var pt = we((dn, vt) => {
+    var ht = Ce();
+    ht.define(
+      "brand",
+      (vt.exports = function (t) {
+        var f = {},
+          l = document,
+          T = t("html"),
+          z = t("body"),
+          b = ".w-webflow-badge",
+          I = window.location,
+          S = /PhantomJS/i.test(navigator.userAgent),
+          k =
+            "fullscreenchange webkitfullscreenchange mozfullscreenchange msfullscreenchange",
+          B;
+        f.ready = function () {
+          var C = T.attr("data-wf-status"),
+            Q = T.attr("data-wf-domain") || "";
+          /\.webflow\.io$/i.test(Q) && I.hostname !== Q && (C = !0),
+            C &&
+              !S &&
+              ((B = B || U()),
+              Y(),
+              setTimeout(Y, 500),
+              t(l).off(k, J).on(k, J));
+        };
+        function J() {
+          var C =
+            l.fullScreen ||
+            l.mozFullScreen ||
+            l.webkitIsFullScreen ||
+            l.msFullscreenElement ||
+            !!l.webkitFullscreenElement;
+          t(B).attr("style", C ? "display: none !important;" : "");
+        }
+        function U() {
+          var C = t('<a class="w-webflow-badge"></a>').attr(
+              "href",
+              "https://webflow.com?utm_campaign=brandjs"
+            ),
+            Q = t("<img>")
+              .attr(
+                "src",
+                "https://d3e54v103j8qbb.cloudfront.net/img/webflow-badge-icon.f67cd735e3.svg"
+              )
+              .attr("alt", "")
+              .css({ marginRight: "8px", width: "16px" }),
+            V = t("<img>")
+              .attr(
+                "src",
+                "https://d1otoma47x30pg.cloudfront.net/img/webflow-badge-text.6faa6a38cd.svg"
+              )
+              .attr("alt", "Made in Webflow");
+          return t("<a></a>"), t("<a></a>");
+        }
+        function Y() {
+          var C = z.children(b),
+            Q = C.length && C.get(0) === B,
+            V = ht.env("editor");
+          if (Q) {
+            V && C.remove();
+            return;
+          }
+          C.length && C.remove(), V || z.append(B);
+        }
+        return f;
+      })
+    );
+  });
   var gt = we((hn, mt) => {
     var Je = Ce();
     Je.define(
